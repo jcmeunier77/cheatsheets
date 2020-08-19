@@ -48,13 +48,6 @@ git checkout bugFix # Switch HEAD to bugFix branch
 git commit
 ```
 
-### How to: Create a branch and commit your code
-```shell
-git branch bugFix # Create a bugFix branch
-git checkout bugFix # Switch HEAD to bugFix branch
-git commit
-```
-
 ### How to: Merge branches
 ```shell
 # To merge branch "bugFix" to "master", be sure to HEAD to master branch:

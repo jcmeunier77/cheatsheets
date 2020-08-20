@@ -67,4 +67,27 @@ git checkout master
 git rebase bugFix
 ```
 
+### How to: Keep your fork synced with the original repo
+
+```shell
+# 1. Fork the repo on github
+# 2. Create a local clone of YOUR fork
+git clone https://github.com/Joffreybvn/CRL-Turing-4.22.git
+
+# 3. Go to your local repo
+cd CRL-Turing-4.22
+
+# 4. Add the ORIGIN repo as upstream
+git remote add upstream https://github.com/becodeorg/CRL-Turing-4.22
+
+# 5. Update your local clone with the changes made on the origin repo
+git fetch upstream
+git merge upstream/master
+
+# 6. Save the changes on github
+git add -A
+git commit
+git push
+```
+
 

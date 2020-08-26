@@ -2,6 +2,7 @@
 
 ## Librairies
 ```Python
+import requests
 import lxml
 from bs4 import BeautifulSoup
 ```
@@ -106,3 +107,18 @@ for p in soup.find_all('h1'):
     print (p.text) # We only retrieve the content => .text
 ```
 
+## Web requests
+
+### Get an html document from the web
+```Python
+from bs4 import BeautifulSoup
+import requests
+
+def get_webpage(url):
+    res = requests.get(url)
+    
+    if res.status_code == 200:
+        return BeautifulSoup(res.content,'lxml')
+
+webpage = get_webpage("https://www.becode.org/about/")
+```

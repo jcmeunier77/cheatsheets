@@ -1,6 +1,6 @@
 # Decorators 101
 
-## What is that ?
+## What is a decorator ?
 In python, everything is object. So; functions are objects too.
 
 A decorator is a function:
@@ -14,7 +14,10 @@ A function can be decorated (called within a decorator) with this syntax:
 def my_function():
     # Do things
 ```
-## How to write a decorator:
+## Writing a basic decorator:
+
+This is a basic decorator example. It doesn't allow to pass paramters.
+**Important:** *@decorator_function* is a syntax that allow us to call a decorated version of *common()*.
 
 ```Python
 
@@ -39,7 +42,8 @@ def common():
 common()
 
 ```
-*@decorator_function* is a syntax that allow us to call a decorated version of *common()*.
+
+## Writing an advanced decorator:
 
 ## Why the @ syntax is important:
 

@@ -221,7 +221,7 @@ print(a.dtype, a)
 # Out: complex64 [1.+0.j 2.+0.j 3.+0.j 4.+0.j]
 ```
 
-Available data types include int8, int16, int32, int64, uint8|16|32|64, float16|32|64 and complex64|128. Check out [the documentation](https://numpy.org/doc/stable/reference/arrays.dtypes.html) for the full list.
+Available data types include int8, int16, int32, int64, uint8|16|32|64, float16|32|64 and complex64|128. Check out [the documentation](https://numpy.org/doc/stable/reference/arrays.dtypes.html) for the full list, and [here too](https://numpy.org/doc/stable/user/basics.types.html).
 
 
 ### itemsize - Get the size in bytes (octets) of each item:

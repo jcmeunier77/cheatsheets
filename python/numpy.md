@@ -13,6 +13,21 @@ a = np.zeros(5)
 ```
 **Out**: `array([0., 0., 0., 0., 0.])`
 
+Create a 3 dimensional array:
+```Python
+a = np.zeros((2,3,4))
+```
+**Out**:
+```
+array([[[0., 0., 0., 0.],
+        [0., 0., 0., 0.],
+        [0., 0., 0., 0.]],
+
+       [[0., 0., 0., 0.],
+        [0., 0., 0., 0.],
+        [0., 0., 0., 0.]]])
+```
+
 Create a two dimension array with zeros:
 
 ```Python
@@ -64,6 +79,41 @@ a = np.zeros((3,4))
        [0., 0., 0., 0.],
        [0., 0., 0., 0.]])`
 
+### np.full - Create an array with a given value
+np.full takes a matrix dimension (a shape), a value, and create a matrix full of this value:
+```Python
+a = np.full((3,4), np.pi)
+```
+**Out**:
+```
+array([[3.14159265, 3.14159265, 3.14159265, 3.14159265],
+       [3.14159265, 3.14159265, 3.14159265, 3.14159265],
+       [3.14159265, 3.14159265, 3.14159265, 3.14159265]])
+```
+
+### np.empty - Create an array with unpredictable values
+```Python
+a = np.empty((2,3))
+```
+**Out**:
+```
+array([[1., 1., 1.],
+       [1., 1., 1.]])
+```
+
+
+### np.random - Create an array with random values
+Others methods exists to create a random arrays !
+```Python
+a = np.random.random((3,4))
+```
+**Out**:
+```
+array([[0.21064871, 0.51084367, 0.04462232, 0.15474993],
+       [0.48943545, 0.17311007, 0.6829123 , 0.48621628],
+       [0.33423204, 0.84978756, 0.35483656, 0.56232577]])
+```
+
 ## Array metadata methods
 
 For the following array:
@@ -87,6 +137,19 @@ a.ndim
 ```Python
 a.size
 # Out: 12
+```
+
+### Type of a numpy array:
+```Python
+type(np.zeros((2,3,4)))
+# Out: numpy.ndarray
+```
+
+### Buffer of an array:
+```Python
+a = np.array([[1,2],[1000, 2000]], dtype=np.int32)
+a.data
+# Out: <memory at 0x0000016531D6AF28>
 ```
 
 ## Arrays operations
@@ -121,3 +184,43 @@ y = np.array((2, 3, 4))
 np.hstack([x, y])
 ```
 **Out**: `array([1, 2, 3, 2, 3, 4])`
+
+## NDarray: an homogeneous array
+**numpy.ndarray** represents a multidimensional, homogeneous array of fixed-size items.
+
+### dtype - Get the type of items in the ndarray:
+
+With integers:
+```Python
+a = np.arange(1, 5)
+print(a.dtype, a)
+# Out: int32 [1 2 3 4]
+```
+
+With floating numbers:
+```Python
+a = np.arange(1.0, 5.0)
+print(a.dtype, a)
+# Out: float64 [1. 2. 3. 4.]
+```
+
+### Specify the dtype on array creation:
+Instead of letting NumPy guess what data type to use, we can set it explicitly when creating an array:
+
+With 64 bits complex numbers:
+```Python
+a = np.arange(1, 5, dtype=np.complex64)
+print(a.dtype, a)
+# Out: complex64 [1.+0.j 2.+0.j 3.+0.j 4.+0.j]
+```
+
+Available data types include int8, int16, int32, int64, uint8|16|32|64, float16|32|64 and complex64|128. Check out [the documentation](https://numpy.org/doc/stable/reference/arrays.dtypes.html) for the full list.
+
+
+### itemsize - Get the size in bytes (octets) of each item:
+Here we have 64bits numbers, so 8 bytes/octets numbers:
+```Python
+a = np.arange(1, 5, dtype=np.complex64)
+a.itemsize
+# Out: 8
+```

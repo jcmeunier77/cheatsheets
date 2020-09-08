@@ -134,7 +134,7 @@ a.shape
 # Out: (3, 4)
 ```
 
-### Number of dimensions:
+### Number of dimensions - Rank:
 ```Python
 a.ndim
 # Out: 2

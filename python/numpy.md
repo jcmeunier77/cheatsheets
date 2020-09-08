@@ -114,6 +114,13 @@ array([[0.21064871, 0.51084367, 0.04462232, 0.15474993],
        [0.33423204, 0.84978756, 0.35483656, 0.56232577]])
 ```
 
+We can also put a seed and then create a randint array:
+```Python
+np.random.seed(0)
+a = np.random.randint(10, size=6)  
+```
+**Out**:`array([5, 0, 3, 3, 7, 9])`
+
 ## Array metadata methods
 
 For the following array:
@@ -223,4 +230,29 @@ Here we have 64bits numbers, so 8 bytes/octets numbers:
 a = np.arange(1, 5, dtype=np.complex64)
 a.itemsize
 # Out: 8
+```
+
+## Arrays operations:
+
+For a given array:
+```Python
+x1 = np.random.randint(10, size=6)  
+```
+
+### Get the first n-elements of an array:
+```Python
+print(x1[:5])
+# Out: [5 0 3 3 7]
+```
+
+### Print the elements from the 6th and on:
+```Python
+print(x1[5:]) 
+# Out: [9]
+```
+
+### Print every thwo elements of an array:
+```Python
+print(x1[::2])
+# Out: [5 3 7]
 ```

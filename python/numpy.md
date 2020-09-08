@@ -256,3 +256,45 @@ print(x1[5:])
 print(x1[::2])
 # Out: [5 3 7]
 ```
+
+## Arithmeric operations
+All the usual arithmetic operators (+, -, , /, //, *, etc.) can be used with ndarrays. They apply elementwise:
+```Python
+a = np.array([14, 23, 32, 41])
+b = np.array([5,  4,  3,  2])
+
+print("a + b  =", a + b)
+print("a - b  =", a - b)
+print("a * b  =", a * b)
+print("a / b  =", a / b)
+print("a // b  =", a // b)
+print("a % b  =", a % b)
+print("a ** b =", a ** b)
+```
+
+For additions/substractions, if the arrays have not the same dimensions, **Python will raise a ValueError**.
+For multiplications/divitions, if column number of a does not match the line number of b, **Python will raise a ValueError**.
+
+### Matrix mumtiplication by a single value
+All the values are multiplied by 2:
+```Python
+C = A * 2 
+```
+
+### Mulltiply two matrices - ndarray.dot
+The number of columns of A must correspond to the number of rows of B:
+```Python
+C = A.dot(B)
+```
+
+### Avoid ValueError in multiplication: Transpose
+Transposing a matrice (array) = "turn" its shape vertically -> horizontally.
+
+B.transpose() can be written B.T
+```Python
+B = np.array([[1,2,3],[4,5,6]])
+BT = B.T
+```
+**Out**: `[[1 4]
+ [2 5]
+ [3 6]]`

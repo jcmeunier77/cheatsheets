@@ -1,3 +1,5 @@
+To get started: https://scipy-lectures.org/intro/numpy/operations.html
+
 ## Array creation methods
 
 ### np.array - Create an array from list

@@ -123,6 +123,18 @@ a = np.random.randint(10, size=6)
 ```
 **Out**:`array([5, 0, 3, 3, 7, 9])`
 
+### np.fromiter - Create an array from an iterator
+```def generator():
+    i = 0
+    
+    while True:
+        i+= 1
+        yield i
+
+arr = np.fromiter(generator(), dtype=int, count=10)
+```
+**Out**:`array([ 1  2  3  4  5  6  7  8  9 10])`
+
 ## Array metadata methods
 
 For the following array:

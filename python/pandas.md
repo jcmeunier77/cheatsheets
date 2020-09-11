@@ -35,16 +35,63 @@ df['column'].mean()
 df['column'].value_counts()
 ```
 
-### Accessing values - iloc:
+### Accessing values, on a int-indexed array - iloc:
 
 **iloc** is definitely one of the most important functions. Generally, you want to use it whenever you have the integer index of a certain row (or a list of integer indexes) that you want to access.
 
 ```Python
-# Best practice: pass a list to iloc.
-df.iloc[[144]] # Return the row @ index 144.
+df.iloc[144] # Return the row @ index 144.
 
 # Using basic method to access specific values:
-df.iloc[ [df['column1'].idxmax()] ]['column2'] # We retrieve the row index of 'column1's maximum value, to access its corresponding 'column2'.
+
+# We retrieve the row index of 'column1's maximum value, to access its corresponding 'column2'.
+df.iloc[ [df['column1'].idxmax()] ]['column2'] 
 # Note: the type of returned value is: "pandas.core.series.Series".
 
+# But the following return type is "pandas.core.frame.DataFrame".
+df.iloc[[df['column'].idxmax()]]
 ```
+
+### Accessong values, on a string/boolean-indexed array - loc
+
+**loc** is a "Purely label-location based indexer for selection by label". See this [useful documentation with examples](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html).
+
+But **loc** can also manage integers !
+
+```Python
+# Same as iloc, but shorter.
+df.loc[df['column1'].idxmax(), 'column2'] 
+
+# Even shorter, with "at".
+df.at[df['column1'].idxmax(), 'column2']
+
+# Or simply:
+df.loc['row', 'column'] 
+```
+
+### Manipulating data
+
+#### Sorting
+With **df.sort_values()**: [See doc here](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html).
+
+```Python
+# By default, sort_value sort ascending:
+df.sort_values('value')
+```
+
+### Filtering the rows conditionally:
+An easy and powerfull tool of pandas: filtering your dataframe, with pythonic assesments:
+
+```Python
+df[df['value'] > 150] # Get a copy of the df with all rows, where 'value' column is greater than 150
+df[(df['value'] > 150) & (df['value'] < 200)] # More complex filter
+```
+
+### Groupby:
+Full explanation: https://medium.com/analytics-vidhya/pandas-groupby-take-the-most-from-your-data-1303a4d41389
+
+In a table, let's imagine we have a column "Name" and a column "score".
+ - Some names appear more than one time.
+ - groupby('name')['score'].sum() will "merge" the row with same name together, and apply a sum() bewteen all score of a same name.
+
+![https://i.imgur.com/Jw6Ghy3.png](https://i.imgur.com/Jw6Ghy3.png)

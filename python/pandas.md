@@ -79,7 +79,7 @@ With **df.sort_values()**: [See doc here](https://pandas.pydata.org/pandas-docs/
 df.sort_values('value')
 ```
 
-### Filtering the rows conditionally:
+#### Filtering the rows conditionally:
 An easy and powerfull tool of pandas: filtering your dataframe, with pythonic assesments:
 
 ```Python
@@ -87,7 +87,7 @@ df[df['value'] > 150] # Get a copy of the df with all rows, where 'value' column
 df[(df['value'] > 150) & (df['value'] < 200)] # More complex filter
 ```
 
-### Groupby:
+#### Groupby:
 Full explanation: https://medium.com/analytics-vidhya/pandas-groupby-take-the-most-from-your-data-1303a4d41389
 
 In a table, let's imagine we have a column "Name" and a column "score".
@@ -95,3 +95,26 @@ In a table, let's imagine we have a column "Name" and a column "score".
  - groupby('name')['score'].sum() will "merge" the row with same name together, and apply a sum() bewteen all score of a same name.
 
 ![https://i.imgur.com/Jw6Ghy3.png](https://i.imgur.com/Jw6Ghy3.png)
+
+### Accessing slice of Dataframe
+
+#### By iteration
+
+```Python
+for index, row in df.iterrows()
+```
+
+#### With bracket indexing:
+
+```Python
+
+# Extracting two columns:
+df[['col1', 'col2']].head()
+
+# Same with loc:
+df.loc[:, ['Wscore', 'Lscore']].head()
+
+# Extracing row with slicing:
+df[0:3]
+df.iloc[0:3,:]
+```

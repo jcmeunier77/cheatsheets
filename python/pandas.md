@@ -3,8 +3,8 @@
 ### Basic methods:
 
 ```Python
-df.head() # Show the first few rows of a DataFrame.
-df.tail() # Show the last few rows of a DataFrame.
+df.head(n) # Show the first n-rows of a DataFrame.
+df.tail(n) # Show the last n-rows of a DataFrame.
 
 
 df.shape # Get the dimention (x, y) of a Dataframe (like Numpy).

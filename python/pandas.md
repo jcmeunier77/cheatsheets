@@ -33,6 +33,9 @@ df['column'].mean()
 
 # Useful: Shows how many times each item appears in the column.
 df['column'].value_counts()
+
+# Return the amount of non-null observations
+df.count()
 ```
 
 ### Accessing values, on a int-indexed array - iloc:

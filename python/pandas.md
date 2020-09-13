@@ -39,6 +39,9 @@ df.count()
 
 # To know how a dataframe is indexed:
 df.index
+
+# To know the datatype of each columns:
+df.info()
 ```
 
 ### Retrieving the data:

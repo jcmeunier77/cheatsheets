@@ -41,6 +41,7 @@ df.count()
 df.index
 
 # To know the datatype of each columns:
+df.dtype
 df.info()
 ```
 

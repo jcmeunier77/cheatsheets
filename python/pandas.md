@@ -36,6 +36,19 @@ df['column'].value_counts()
 
 # Return the amount of non-null observations
 df.count()
+
+# To know how a dataframe is indexed:
+df.index
+```
+
+### Retrieving the data:
+
+```Python
+# From local storage:
+df = pd.read_csv('/content/drive/My Drive/datas/en.openfoodfacts.org.products.tsv', sep='\t')
+
+# From web:
+df = pd.read_csv(url, sep = '\t')
 ```
 
 ### Accessing values, on a int-indexed array - iloc:

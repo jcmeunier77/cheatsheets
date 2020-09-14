@@ -55,6 +55,8 @@ df = pd.read_csv('/content/drive/My Drive/datas/en.openfoodfacts.org.products.ts
 df = pd.read_csv(url, sep = '\t')
 ```
 
+![https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-768x549.png](https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-768x549.png)
+
 ### Accessing values, on a int-indexed array - iloc:
 
 **iloc** is definitely one of the most important functions. Generally, you want to use it whenever you have the integer index of a certain row (or a list of integer indexes) that you want to access.

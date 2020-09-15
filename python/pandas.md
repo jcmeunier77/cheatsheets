@@ -43,6 +43,9 @@ df.index
 # To know the datatype of each columns:
 df.dtype
 df.info()
+
+# To know if a Series ( a row or column) have unique values:
+df['column'].is_unique # Boolean
 ```
 
 ### Retrieving the data:

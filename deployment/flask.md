@@ -100,3 +100,44 @@ def upload_file():
         f = request.files['the_file']
         f.save('/var/www/uploads/' + secure_filename(f.filename))
 ```
+
+## Errors and redirect
+
+See the full details on [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/#redirects-and-errors)
+
+```Python
+from flask import abort, redirect, url_for
+
+@app.route('/')
+def index():
+    return redirect(url_for('login'))
+
+@app.route('/login')
+def login():
+    abort(401)
+    this_is_never_executed()
+```
+
+## API with JSON
+
+It’s easy to write a JSON API: If you return a dict from a view, it will be converted automatically to a JSON response.
+
+```Python
+@app.route("/me")
+def me_api():
+    user = get_current_user()
+    return {
+        "username": user.username,
+        "theme": user.theme,
+        "image": url_for("user_image", filename=user.image),
+    }
+```
+
+You may want to create JSON responses for types other than `dict`. In that case, use the **jsonify()** function, which will serialize any supported JSON data type:
+
+```Python
+@app.route("/users")
+def users_api():
+    users = get_all_users()
+    return jsonify([user.to_json() for user in users])
+```

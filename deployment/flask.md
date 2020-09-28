@@ -83,3 +83,20 @@ To generate URLs for static files, use the special `static` endpoint name:
 url_for('static', filename='style.css')
 ```
 The file has to be stored on the filesystem as `static/style.css`.
+
+## File uploads
+
+Do not forget to set the `enctype="multipart/form-data"` attribute on your HTML form, otherwise the browser will not transmit your files at all.
+
+Uploaded files are stored in memory or at a temporary location on the filesystem. You can access those files by looking at the **files** attribute on the request object. Each uploaded file is stored in that dictionary. It behaves just like a standard Python **file** object, but it also has a **save()** method that allows you to store that file on the filesystem of the server. Here is a simple example showing how that works:
+
+```Python
+from flask import request
+from werkzeug.utils import secure_filename
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        f = request.files['the_file']
+        f.save('/var/www/uploads/' + secure_filename(f.filename))
+```

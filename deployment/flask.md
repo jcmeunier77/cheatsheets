@@ -120,6 +120,8 @@ def login():
 
 ## API with JSON
 
+Useful documentation about good practices: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxiii-application-programming-interfaces-apis
+
 It’s easy to write a JSON API: If you return a dict from a view, it will be converted automatically to a JSON response.
 
 ```Python

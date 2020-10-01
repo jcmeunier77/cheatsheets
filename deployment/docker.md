@@ -8,6 +8,7 @@ Container are designed to run a specific task: When an application finish its ex
 ## Docker Container commands
 
 ### Start a container
+#### 1. Start a simple container
 With this command, docker will start a container. If the container doesn't exists yet, it will download it from the docker hub (This only happen the first time a container is run).
 ```Python
 # Here we'll run a NodeJs container
@@ -15,7 +16,7 @@ docker run -d nodejs
 ```
 The `-d` parameter means "detached": The container is run in the background, you won't see its logs appearing on your console.
 
-#### Starting in interactive mode
+#### 2. Starting in interactive mode
 Some application requires to get inputs from the command line. However, by default, docker start in non-interactive mode. To **start in interactive mode**, add `-i` to the run command. And to show the commands prompted by your application, you need to **start in terminal mode** with the `-it` parameter:
 
 ```Python
@@ -27,14 +28,14 @@ docker run -it nodejs
 ```
 Now, you can type your command direclty to the app currently runnin, as if the app was running direclty in your console.
 
-#### Specifying an image version
+#### 3. Specifying an image version
 You can **specify the desired version** of a image by adding a version tag:
 ```Python
 docker run -d nodejs:14.11.0-strech
 # Find tags of an image on: https://hub.docker.com/_/node?tab=description
 ```
 
-#### Port forwarding
+#### 4. Port forwarding
 Inside a Docker host, a docker container has an IP:Port. However, this IP:Port is local to the Docker host: it can't be used to acces to the container from internet. The Docker host has an IP:Port accessible from the internet. 
 
 To give access to a container access to internet, we need to **link the Docker Host IP to the internal docker container IP**. And actually, IP are already connected. We just have to **map the ports**:
@@ -43,7 +44,9 @@ To give access to a container access to internet, we need to **link the Docker H
 docker run -p 80:5000 nodejs
 ```
 
-#### Volume mapping
+In this example, *80* is the outside port (the Docker Host port), while *5000* is the inside port (the container port inside the docker host). The outisde port **must be free**: If another container is using it, you can't use it again ! You have to choose another port.
+
+#### 5. Volume mapping
 By default, inside a docker container, the file stored/created will be remove once the container is closed. This is annoying for databases ! Hopefully, you can map specific folder from inside the container to ouside. So that the data stored in this folder is constantly copied outside.
 
 In this example, a directory was created in the Docker Host, and mapped to a folder inside the Docker container:
@@ -51,7 +54,17 @@ In this example, a directory was created in the Docker Host, and mapped to a fol
 docker run -v /my/oustide/dir:/an/inside/dir nodejs
 ```
 
-In this example, *80* is the outside port (the Docker Host port), while *5000* is the inside port (the container port inside the docker host). The outisde port **must be free**: If another container is using it, you can't use it again ! You have to choose another port.
+#### 6. Environment Variables
+
+In python, specify an environment variables like this:
+```Python
+color = os.environ.get('APP_COLOR')
+```
+
+And later, you can run a docker container while **specifying the environment variables**:
+```Python
+docker run -e APP_COLOR=green nodejs
+```
 
 ### Attach to a container
 To see the logs of a currently running container, attach to it
@@ -121,3 +134,4 @@ With `docker exec`, you can execute a command inside a docker container.
 # container_name is the name of your container.
 docker exec container_name cat /etc/hosts
 ```
+

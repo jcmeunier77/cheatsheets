@@ -1,4 +1,4 @@
-# Docker cheatsheet
+# Docker 101
 
 **Docker image**: Conponent (OS, library, etc) encapsulated with its configuration in order to instanciate one of more containers.
 **Docker container**: Instance of a docker image, running on a Docker client.

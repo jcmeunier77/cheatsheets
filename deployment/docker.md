@@ -150,17 +150,26 @@ The *Dockerfile* contains all of the necessary instructions used to setup your a
 
 Exemple for a flask application:
 ```Python
-FROM Ubuntu  # Define which OS should be used to run the application.
+# Define which OS should be used to run the application.
+FROM Ubuntu 
 
-RUN apt-get update  # RUN instruction give commands to run to the OS
+# RUN instruction give commands to run to the OS
+RUN apt-get update 
 RUN apt-get install python
 
 RUN pip install flask
 RUN pip install flask-mysql
 
-# Update the entrypoint with "flask" command
-COPY . /opt/source_code  # Copy the source code to this folder
+# Copy the source code to this folder
+COPY . /opt/source_code 
 
+# Define environment variables
+ENV APP_COLOR "green"
+
+# Define the working directory
+WORKDIR /root
+
+# Update the entrypoint with "flask" command
 ENTRYPOINT FLASK_APP=/opt/source_code/app.py flask run  
 ```
 

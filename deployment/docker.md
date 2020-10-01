@@ -1,7 +1,7 @@
 # Docker cheatsheet
 
 **Docker image**: Conponent (OS, library, etc) encapsulated with its configuration in order to instanciate one of more containers.
-**Docker container**: Instance of a docker image, running on a Docker
+**Docker container**: Instance of a docker image, running on a Docker client.
 
 Container are designed to run a specific task: When an application finish its executions (or when it crashed), docker will close the container.
 

@@ -59,7 +59,7 @@ To see the logs of a currently running container, attach to it
 docker attach container_name
 ```
 
-### Listing all running containers
+### Listing / Getting details about containers
 Useful to know the currently executer containers. It provides the list of the names of the container, that we can use later to stop a specific container.
 ```Python
 # List all the running containers
@@ -67,6 +67,18 @@ docker ps
 
 # List all the running and previously closed containers
 docker ps -a
+```
+
+#### Getting a container's details
+To get **more details** about a specific container, use:
+```Python
+docker inspect container_name
+```
+
+#### Displaying a container's logs
+To get the logs of a container, use:
+```Python
+docker logs container_name
 ```
 
 ### Stop a container

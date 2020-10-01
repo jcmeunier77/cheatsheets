@@ -43,6 +43,14 @@ To give access to a container access to internet, we need to **link the Docker H
 docker run -p 80:5000 nodejs
 ```
 
+#### Volume mapping
+By default, inside a docker container, the file stored/created will be remove once the container is closed. This is annoying for databases ! Hopefully, you can map specific folder from inside the container to ouside. So that the data stored in this folder is constantly copied outside.
+
+In this example, a directory was created in the Docker Host, and mapped to a folder inside the Docker container:
+```Python
+docker run -v /my/oustide/dir:/an/inside/dir nodejs
+```
+
 In this example, *80* is the outside port (the Docker Host port), while *5000* is the inside port (the container port inside the docker host). The outisde port **must be free**: If another container is using it, you can't use it again ! You have to choose another port.
 
 ### Attach to a container

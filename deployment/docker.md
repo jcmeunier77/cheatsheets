@@ -148,7 +148,7 @@ docker exec container_name cat /etc/hosts
 ### Step 1: Create a Dockerfile
 The *Dockerfile* contains all of the necessary instructions used to setup your application. It contains the dependencies, entry points, etc...
 
-Exemple for a flask application:
+**Exemple for a flask application**:
 ```Python
 # Define which OS should be used to run the application.
 FROM Ubuntu 
@@ -171,6 +171,19 @@ WORKDIR /root
 
 # Update the entrypoint with "flask" command
 ENTRYPOINT FLASK_APP=/opt/source_code/app.py flask run  
+```
+
+**Avoid container closing**:
+Usefull for application like *Ubuntu*, *nginx*, *mysql*:
+
+```Python
+# Examples
+CMD command param1
+CMD sleep 5
+
+# Real life examples:
+CMD nginx
+CMD mysql
 ```
 
 CAPS are instructions, while lowercase ara argument.

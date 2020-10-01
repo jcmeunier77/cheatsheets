@@ -34,6 +34,17 @@ docker run -d nodejs:14.11.0-strech
 # Find tags of an image on: https://hub.docker.com/_/node?tab=description
 ```
 
+#### Port forwarding
+Inside a Docker host, a docker container has an IP:Port. However, this IP:Port is local to the Docker host: it can't be used to acces to the container from internet. The Docker host has an IP:Port accessible from the internet. 
+
+To give access to a container access to internet, we need to **link the Docker Host IP to the internal docker container IP**. And actually, IP are already connected. We just have to **map the ports**:
+
+```Python
+docker run -p 80:5000 nodejs
+```
+
+In this example, *80* is the outside port (the Docker Host port), while *5000* is the inside port (the container port inside the docker host). The outisde port **must be free**: If another container is using it, you can't use it again ! You have to choose another port.
+
 ### Attach to a container
 To see the logs of a currently running container, attach to it
 ```Python

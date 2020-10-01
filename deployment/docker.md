@@ -15,6 +15,25 @@ docker run -d nodejs
 ```
 The `-d` parameter means "detached": The container is run in the background, you won't see its logs appearing on your console.
 
+#### Starting in interactive mode
+Some application requires to get inputs from the command line. However, by default, docker start in non-interactive mode. To **start in interactive mode**, add `-i` to the run command. And to show the commands prompted by your application, you need to **start in terminal mode** with the `-it` parameter:
+
+```Python
+# Run in interactive mode (no prompt allowed for the appplication, but interactiond are allowed)
+docker run -i nodejs
+
+# Run in interactive-terminal mode (application's prompt and interactions are allowed)
+docker run -it nodejs
+```
+Now, you can type your command direclty to the app currently runnin, as if the app was running direclty in your console.
+
+#### Specifying an image version
+You can **specify the desired version** of a image by adding a version tag:
+```Python
+docker run -d nodejs:14.11.0-strech
+# Find tags of an image on: https://hub.docker.com/_/node?tab=description
+```
+
 ### Attach to a container
 To see the logs of a currently running container, attach to it
 ```Python
@@ -28,7 +47,7 @@ Useful to know the currently executer containers. It provides the list of the na
 docker ps
 
 # List all the running and previously closed containers
-# docker ps -a
+docker ps -a
 ```
 
 ### Stop a container

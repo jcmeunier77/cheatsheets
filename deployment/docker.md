@@ -66,6 +66,47 @@ And later, you can run a docker container while **specifying the environment var
 docker run -e APP_COLOR=green nodejs
 ```
 
+#### 7. Networking
+
+**Bridge**: Private internal network, withint a Docker Host. Containers get connected to this network **by default**. Containers can access each others using the internal IP given by the bridge network, if they need. Accessing any of this container from internet required to maps the ports.
+
+```Python
+docker run nodejs  # Bridge by default
+```
+
+**Host**: The internal network is replaced by the Docker host network: If a container start at port 5000, it will be automatically available from internet through this port.
+
+```Python
+docker run nodejs --network=host
+```
+
+**None**: Container are not attached to any network. They can't be accessed from internet, nor from other containers inside the same Docker host.
+
+```Python
+docker run nodejs --network=none
+```
+
+##### Create multiple bridges:
+Useful to have two networks within the same Docker Host
+
+```Python
+docker network create \
+    --driver bridge  # network type
+    --subnet 182.18.0.0/16  # subnet
+    custom-isolated-network  # network name
+```
+
+##### Listing all networks:
+```Python
+docker network ls
+````
+
+##### Built-in DNS server
+To connect a container to another one (Eg: A python application to a database), we can use:
+ - The internal IP: `mysql.connect(127.0.0.2)`
+ - The container name: `mysql.connect(container_name)`
+Using container name ensure we connects containers together, even if their ip change between deployments.
+
 ### Attach to a container
 To see the logs of a currently running container, attach to it
 ```Python

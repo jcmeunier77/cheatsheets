@@ -105,6 +105,10 @@ To remove a container and clean all used space.
 docker rm nodejs
 ```
 
+<br>
+<hr>
+<br>
+
 ## Docker Image commands
 
 ### Download a docker image
@@ -135,3 +139,43 @@ With `docker exec`, you can execute a command inside a docker container.
 docker exec container_name cat /etc/hosts
 ```
 
+<br>
+<hr>
+<br>
+
+## Containerizing: Creating Docker images from applications
+
+### Step 1: Create a Dockerfile
+The *Dockerfile* contains all of the necessary instructions used to setup your application. It contains the dependencies, entry points, etc...
+
+Exemple for a flask application:
+```Python
+FROM Ubuntu  # Define which OS should be used to run the application.
+
+RUN apt-get update  # RUN instruction give commands to run to the OS
+RUN apt-get install python
+
+RUN pip install flask
+RUN pip install flask-mysql
+
+# Update the entrypoint with "flask" command
+COPY . /opt/source_code  # Copy the source code to this folder
+
+ENTRYPOINT FLASK_APP=/opt/source_code/app.py flask run  
+```
+
+CAPS are instructions, while lowercase ara argument.
+
+### Step 2: Build the image
+Build the docker image:
+```Python
+docker build Dockerfile -t account_name/your_app_name
+```
+
+Each build's step is cached, so that if a build fail, the next time you build, docker will start back where the previous build crashed.
+
+### Step 3: Pushing the image
+Then push it to the docker hub:
+```Python
+docker push account_name/your_app_name
+```

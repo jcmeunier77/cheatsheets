@@ -47,11 +47,23 @@ docker run -p 80:5000 nodejs
 In this example, *80* is the outside port (the Docker Host port), while *5000* is the inside port (the container port inside the docker host). The outisde port **must be free**: If another container is using it, you can't use it again ! You have to choose another port.
 
 #### 5. Volume mapping
-By default, inside a docker container, the file stored/created will be remove once the container is closed. This is annoying for databases ! Hopefully, you can map specific folder from inside the container to ouside. So that the data stored in this folder is constantly copied outside.
+By default, inside a docker container, the file stored/created will be remove once the container is closed. This is annoying, especially for databases ! Hopefully, you can map specific folder from inside the container to ouside. So that the data stored in this folder is constantly copied outside.
 
+##### With other folder:
 In this example, a directory was created in the Docker Host, and mapped to a folder inside the Docker container:
 ```Python
 docker run -v /my/oustide/dir:/an/inside/dir nodejs
+```
+
+##### With other volume:
+Here, we specify a volume name that will be created under `var/lib/docker/volumes/` on the Docker Host.
+```Python
+docker run -v data_volume:/an/inside/dir nodejs
+```
+
+You can also create a volume first, and then use it during the *run*, with:
+```Python
+docker volume create data_volume
 ```
 
 #### 6. Environment Variables

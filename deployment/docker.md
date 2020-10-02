@@ -254,3 +254,15 @@ Then push it to the docker hub:
 ```Python
 docker push account_name/your_app_name
 ```
+
+# Errors:
+
+## Permission denied /var/run/docker.sock
+After a fresh install, on trying to connect, this error can apprear:
+
+![https://i.imgur.com/yMgMUS9.png](https://i.imgur.com/yMgMUS9.png)
+
+**To solve it:**
+```Python
+sudo chmod 666 /var/run/docker.sock
+```

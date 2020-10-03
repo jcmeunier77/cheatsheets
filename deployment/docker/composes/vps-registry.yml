@@ -1,3 +1,4 @@
+# BEFORE: docker network create nginx-proxy
 version: "3"
 
 services:

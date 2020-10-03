@@ -7,8 +7,10 @@ services:
     container_name: nginx-proxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - $HOME/ssl:/etc/nginx/certs
 
   registry:
      image: registry:2
@@ -17,6 +19,9 @@ services:
      restart: always
      environment:
        VIRTUAL_HOST: registry.s1.joffreybvn.be
+       VIRTUAL_PROTO: http
+       VIRTUAL_PORT: 80
+       CERT_NAME: joffreybvn.be
      container_name: registry
 
 networks:

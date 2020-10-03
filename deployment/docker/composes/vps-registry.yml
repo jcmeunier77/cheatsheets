@@ -12,8 +12,6 @@ services:
       LETSENCRYPT_EMAIL: "joffreybvn@gmail.com"
     networks:
       service_network:
-    volumes:
-      - nginx-certs:/etc/nginx/certs
 
   nginx-proxy:
     image: jwilder/nginx-proxy

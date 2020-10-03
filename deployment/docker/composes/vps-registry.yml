@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  registry:
+     image: registry:2
+     expose:
+       - 80
+     restart: always
+     environment:
+       VIRTUAL_HOST: registry.s1.joffreybvn.be
+     container_name: registry
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
